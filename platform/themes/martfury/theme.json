@@ -1,7 +1,7 @@
 {
-    "name": "Martfury",
+    "name": "Store",
     "namespace": "Theme\\Martfury\\",
-    "description": "Martfury - Laravel Ecommerce System",
+    "description": "Laravel Ecommerce Theme",
     "author": "Botble Technologies",
     "required_plugins": []
 }

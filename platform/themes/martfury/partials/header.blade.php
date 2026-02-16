@@ -103,7 +103,7 @@
                         @if (is_plugin_active('ecommerce'))
                             <ul class="navigation__extra">
                                 @if (is_plugin_active('marketplace'))
-                                    <li><a href="{{ !auth('customer')->check() ? route('customer.register') : (auth('customer')->user()->is_vendor ? route('marketplace.vendor.dashboard') : route('marketplace.vendor.become-vendor')) }}">{{ theme_option('sell_on_site_text') ?: __('Sell On Martfury') }}</a></li>
+                                    <li><a href="{{ !auth('customer')->check() ? route('customer.register') : (auth('customer')->user()->is_vendor ? route('marketplace.vendor.dashboard') : route('marketplace.vendor.become-vendor')) }}">{{ theme_option('sell_on_site_text') ?: __('Sell On Store') }}</a></li>
                                 @endif
                                 @if (EcommerceHelper::isOrderTrackingEnabled())
                                     <li><a href="{{ route('public.orders.tracking') }}">{{ __('Track your order') }}</a></li>

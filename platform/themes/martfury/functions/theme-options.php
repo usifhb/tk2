@@ -238,7 +238,7 @@ app()->booted(function () {
             'id' => 'sell_on_site_text',
             'section_id' => 'opt-text-subsection-general',
             'type' => 'text',
-            'label' => __('Sell on site text (default: Sell on Martfury)'),
+            'label' => __('Sell on site text (default: Sell on Store)'),
             'attributes' => [
                 'name' => 'sell_on_site_text',
                 'value' => null,

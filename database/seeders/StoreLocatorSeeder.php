@@ -13,7 +13,7 @@ class StoreLocatorSeeder extends Seeder
         StoreLocator::query()->truncate();
 
         $storeLocator = StoreLocator::query()->create([
-            'name' => 'Martfury',
+            'name' => 'Store',
             'email' => 'sales@botble.com',
             'phone' => '1800979769',
             'address' => '502 New Street',

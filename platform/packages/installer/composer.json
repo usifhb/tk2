@@ -1,14 +1,14 @@
 {
     "name": "botble/installer",
-    "description": "Installer package for Botble CMS application",
+    "description": "Installer package for Botble CMS application (disabled stub)",
     "type": "package",
+    "require": {
+        "botble/platform": "*@dev"
+    },
     "autoload": {
         "psr-4": {
             "Botble\\Installer\\": "src"
         }
-    },
-    "require": {
-        "botble/platform": "*@dev"
     },
     "extra": {
         "laravel": {

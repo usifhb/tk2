@@ -21,7 +21,7 @@
                 <div>[theme-ads key_1="Q9YDUIC9HSWS" key_2="Q9YDUIC9HSWS"][/theme-ads]</div>
                 <div>[product-collections title="Exclusive Products"][/product-collections]</div>
                 <div>[product-category-products category_id="17"][/product-category-products]</div>
-                <div>[download-app title="Download Martfury App Now!" subtitle="Shopping fastly and easily more with our app. Get a link to download the app on your phone." screenshot="general/app.png" android_app_url="https://www.appstore.com" ios_app_url="https://play.google.com/store"][/download-app]</div>
+                <div>[download-app title="Download Store App Now!" subtitle="Shopping fastly and easily more with our app. Get a link to download the app on your phone." screenshot="general/app.png" android_app_url="https://www.appstore.com" ios_app_url="https://play.google.com/store"][/download-app]</div>
                 <div>[product-category-products category_id="15"][/product-category-products]</div>
                 <div>[newsletter-form title="Join Our Newsletter Now" subtitle="Subscribe to get information about products and coupons"][/newsletter-form]</div>
             </div>
