@@ -91,6 +91,7 @@
                         <h3 class="h1 page-title justify-content-center text-white">
                             {{ trans('packages/installer::installer.title') }}
                         </h3>
+						<h2 class="h1 page-title justify-content-center text-white">DOWNLOADED FROM PROFELAR.com</h2>
                     </div>
                 </div>
 

@@ -7,8 +7,11 @@ use Botble\Base\Events\UpdatedEvent;
 use Botble\Base\Facades\BaseHelper;
 use Botble\Base\Supports\ServiceProvider;
 use Botble\Base\Traits\LoadAndPublishDataTrait;
+use Botble\Installer\Http\Middleware\CheckIfInstalledMiddleware;
+use Botble\Installer\Http\Middleware\CheckIfInstallingMiddleware;
+use Botble\Installer\Http\Middleware\RedirectIfNotInstalledMiddleware;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Events\RouteMatched;
 
 class InstallerServiceProvider extends ServiceProvider
 {
@@ -22,23 +25,22 @@ class InstallerServiceProvider extends ServiceProvider
             ->loadAndPublishConfigurations('installer')
             ->loadAndPublishTranslations()
             ->loadAndPublishViews()
+            ->loadRoutes()
             ->publishAssets();
 
-        // Installer disabled: no redirect to install page, /install redirects to home
-        $this->registerInstallRedirectRoutes();
-
-        $this->app['events']->listen([UpdatedEvent::class, FinishedSeederEvent::class], function () {
+        $this->app['events']->listen(RouteMatched::class, function () {
             if (defined('INSTALLED_SESSION_NAME')) {
-                BaseHelper::saveFileData(storage_path(INSTALLED_SESSION_NAME), Carbon::now()->toDateTimeString());
+                $router = $this->app->make('router');
+
+                $router->middlewareGroup('install', [CheckIfInstalledMiddleware::class]);
+                $router->middlewareGroup('installing', [CheckIfInstallingMiddleware::class]);
+
+                $router->pushMiddlewareToGroup('web', RedirectIfNotInstalledMiddleware::class);
             }
         });
-    }
 
-    protected function registerInstallRedirectRoutes(): void
-    {
-        Route::middleware('web')->group(function () {
-            Route::any('install', fn () => redirect()->to('/'))->name('installers.welcome');
-            Route::any('install/{path}', fn () => redirect()->to('/'))->where('path', '.*');
+        $this->app['events']->listen([UpdatedEvent::class, FinishedSeederEvent::class], function () {
+            BaseHelper::saveFileData(storage_path(INSTALLED_SESSION_NAME), Carbon::now()->toDateTimeString());
         });
     }
 }

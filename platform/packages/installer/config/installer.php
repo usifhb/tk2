@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'enabled' => env('CMS_ENABLE_INSTALLER', false),
+    'enabled' => env('CMS_ENABLE_INSTALLER', true),
     'requirements' => [
         'php' => [
             'openssl',
